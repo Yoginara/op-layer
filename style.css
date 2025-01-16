@@ -6,117 +6,132 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
   color: #333;
 }
 
 /* Header styles */
 header {
-  background-color: #007bff;
-  color: white;
   text-align: center;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
   padding: 20px 0;
-  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2rem;
   font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Map container */
 #map {
   width: 100%;
   height: 80vh;
-  background-color: #e0e0e0;
-  border-radius: 10px;
   margin: 20px auto;
-  max-width: 1200px;
+  background-color: #f7f9fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
 /* Popup styles */
 .popup {
-  position: fixed;
-  bottom: 50%;
+  position: absolute;
+  bottom: 30px;
   left: 50%;
-  transform: translate(-50%, 50%);
-  background-color: #ffffff;
-  padding: 20px 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   z-index: 10;
   font-size: 16px;
-  width: 90%;
+  color: #333;
   max-width: 400px;
+  width: 90%;
+  animation: popup-fade 0.3s ease-in-out;
 }
 
-/* Popup title */
+.popup.hidden {
+  display: none;
+}
+
 .popup h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #444;
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #007bff;
   text-align: center;
 }
 
-/* Popup input field */
+/* Input field */
 .popup input[type='text'] {
   width: 100%;
   padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #444;
-  transition: border-color 0.3s ease-in-out;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .popup input[type='text']:focus {
   border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
   outline: none;
 }
 
-/* Button styles */
-button {
+/* Buttons */
+.popup button {
+  margin-top: 15px;
   padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  font-size: 14px;
+  transition: transform 0.2s, background-color 0.3s ease;
+}
+
+.popup button:hover {
+  transform: scale(1.05);
+}
+
+.popup button:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
 #add-marker {
-  background-color: #007bff;
+  background-color: #28a745;
   color: white;
 }
 
 #add-marker:hover {
-  background-color: #0056b3;
+  background-color: #218838;
 }
 
 #cancel {
   background-color: #dc3545;
   color: white;
-  margin-left: 10px;
 }
 
 #cancel:hover {
   background-color: #c82333;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  header {
-    font-size: 20px;
-    padding: 15px 0;
+/* Animation */
+@keyframes popup-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-
-  #map {
-    height: 60vh;
-  }
-
-  .popup {
-    width: 95%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-  
